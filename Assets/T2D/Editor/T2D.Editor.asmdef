@@ -1,0 +1,19 @@
+{
+    "name": "T2D.Editor",
+    "rootNamespace": "T2D.Herramientas",
+    "references": [
+        "T2D.Dominio",
+        "T2D.Juego"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
