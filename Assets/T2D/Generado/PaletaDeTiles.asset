@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299cf4709a1e5415f85cb29919e29e75, type: 3}
+  m_Name: PaletaDeTiles
+  m_EditorClassIdentifier: T2D.Juego::T2D.Juego.PaletaDeTiles
+  suelo: {fileID: 11400000, guid: 0ad2fab1f87c44de1b1812f5389ca5e9, type: 2}
+  ruta: {fileID: 11400000, guid: 0f008078bbb9246f8b983892cdd48156, type: 2}
+  palto: {fileID: 11400000, guid: 28f921e7688df48588764acee8e407a9, type: 2}
+  citrico: {fileID: 11400000, guid: 6bb8216cfacbc4ab7adaf48c1eace75d, type: 2}
+  bloqueada: {fileID: 11400000, guid: 11566e5f688d34ff48052ae7e72cf1d8, type: 2}
+  silo: {fileID: 11400000, guid: 0bb2c989add654bf9a265dd947b66b65, type: 2}

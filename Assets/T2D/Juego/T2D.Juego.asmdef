@@ -1,0 +1,23 @@
+{
+    "name": "T2D.Juego",
+    "rootNamespace": "T2D.Juego",
+    "references": [
+        "T2D.Dominio",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.0.0",
+            "define": "T2D_INPUT_SYSTEM"
+        }
+    ],
+    "noEngineReferences": false
+}

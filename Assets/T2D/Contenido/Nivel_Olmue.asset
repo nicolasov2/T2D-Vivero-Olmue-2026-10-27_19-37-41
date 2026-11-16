@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e843d9363f3343c1804bfdeb6f8e9e2, type: 3}
+  m_Name: Nivel_Olmue
+  m_EditorClassIdentifier: T2D.Juego::T2D.Juego.NivelDefinicion
+  nombre: "Vivero de Olmu\xE9"
+  ancho: 16
+  alto: 9
+  silo: {x: 15, y: 4}
+  capacidadSilo: 200
+  aguaInicial: 300
+  energiaInicial: 150
+  rutas:
+  - puntos:
+    - {x: 0, y: 4}
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+    - {x: 3, y: 4}
+    - {x: 3, y: 3}
+    - {x: 3, y: 2}
+    - {x: 4, y: 2}
+    - {x: 5, y: 2}
+    - {x: 6, y: 2}
+    - {x: 7, y: 2}
+    - {x: 8, y: 2}
+    - {x: 8, y: 3}
+    - {x: 8, y: 4}
+    - {x: 8, y: 5}
+    - {x: 8, y: 6}
+    - {x: 9, y: 6}
+    - {x: 10, y: 6}
+    - {x: 11, y: 6}
+    - {x: 12, y: 6}
+    - {x: 13, y: 6}
+    - {x: 13, y: 5}
+    - {x: 13, y: 4}
+    - {x: 14, y: 4}
+    - {x: 15, y: 4}
+  pasillos:
+  - especie: 0
+    desde: {x: 5, y: 4}
+    tamano: {x: 3, y: 2}
+  - especie: 1
+    desde: {x: 10, y: 2}
+    tamano: {x: 3, y: 2}
+  - especie: 0
+    desde: {x: 1, y: 6}
+    tamano: {x: 2, y: 2}
+  - especie: 1
+    desde: {x: 14, y: 0}
+    tamano: {x: 2, y: 2}
+  - especie: 0
+    desde: {x: 10, y: 8}
+    tamano: {x: 3, y: 1}
+  bloqueadas:
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 5, y: 8}
+  - {x: 6, y: 8}
+  - {x: 14, y: 8}
+  - {x: 15, y: 8}
