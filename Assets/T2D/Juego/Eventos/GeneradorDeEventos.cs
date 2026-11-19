@@ -50,7 +50,7 @@ namespace T2D.Juego
 
         private void Update()
         {
-            if (_pool == null || _partida.Nivel.Silo.EstaAgotado)
+            if (_pool == null || _partida.Nivel.Rutas.Count == 0 || _partida.Nivel.Silo.EstaAgotado)
             {
                 return;
             }
@@ -64,9 +64,14 @@ namespace T2D.Juego
 
         private void Aparecer()
         {
+            var rutas = _partida.Nivel.Rutas;
+            if (rutas.Count == 0)
+            {
+                return;
+            }
+
             var definicion = eventos[_siguienteEvento];
             _siguienteEvento = (_siguienteEvento + 1) % eventos.Length;
-            var rutas = _partida.Nivel.Rutas;
             var ruta = rutas[_siguienteRuta];
             _siguienteRuta = (_siguienteRuta + 1) % rutas.Count;
             _pool.Get().Iniciar(new EventoEstres(definicion.ADefinicion(), ruta), definicion.Color, _pool.Release);

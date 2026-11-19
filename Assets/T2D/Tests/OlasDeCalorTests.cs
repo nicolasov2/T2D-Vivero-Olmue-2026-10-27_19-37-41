@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using T2D.Dominio;
 
@@ -55,6 +57,18 @@ namespace T2D.Tests
         }
 
         [Test]
+        public void LaOlaSoloEntraEnCasillasDeSuRuta()
+        {
+            var ola = NuevaOla(2f, 10);
+            var casillasDeRuta = new HashSet<Posicion>(ola.Recorrido.Ruta.Puntos);
+
+            var visitadas = ola.Recorrido.Avanzar(20f);
+
+            Assert.IsTrue(ola.Recorrido.HaLlegado);
+            Assert.IsTrue(visitadas.All(casilla => casillasDeRuta.Contains(casilla)));
+        }
+
+        [Test]
         public void EnElSprint1LaOlaNoDaniaEstaciones()
         {
             var estacion = _nivel.Construccion.IntentarColocar(NivelDePrueba.Camara(), NivelDePrueba.SueloLibre).Valor;
@@ -62,6 +76,8 @@ namespace T2D.Tests
             NuevaOla(2f, 10).Avanzar(10f, _nivel);
 
             Assert.AreEqual(estacion.Integridad.Maxima, estacion.Integridad.Actual);
+            Assert.AreSame(estacion, _nivel.Construccion.EstacionEn(NivelDePrueba.SueloLibre));
+            Assert.IsTrue(_nivel.Cuadricula.Obtener(NivelDePrueba.SueloLibre).EstaOcupada);
         }
 
         [Test]
