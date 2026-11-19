@@ -19,7 +19,7 @@ namespace T2D.Tests
         [Test]
         public void PA1_ElCostoSeMuestraEnAguaYEnergia()
         {
-            Assert.AreEqual("60 agua · 45 energía", _camara.Costo.ToString());
+            Assert.AreEqual("60 agua · 40 energía", _camara.Costo.ToString());
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace T2D.Tests
             _nivel.Construccion.IntentarColocar(_camara, NivelDePrueba.SueloLibre);
 
             Assert.AreEqual(40, _nivel.Creditos.Agua);
-            Assert.AreEqual(55, _nivel.Creditos.Energia);
+            Assert.AreEqual(60, _nivel.Creditos.Energia);
         }
 
         [Test]
