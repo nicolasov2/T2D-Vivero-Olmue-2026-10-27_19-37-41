@@ -35,7 +35,7 @@ namespace T2D.Tests
 
         public static Nivel Construir(DatosDeNivel datos) => ConstructorDeNivel.Construir(datos).Valor;
 
-        public static DefinicionEstacion Camara() => new DefinicionEstacion("Cámara SBC", new Costo(60, 45), 2, 3);
+        public static DefinicionEstacion Camara() => new DefinicionEstacion("Cámara SBC", new Costo(60, 40), 2, 3);
 
         public static IReadOnlyList<Posicion> Fila(int y, int desdeX, int hastaX) =>
             Enumerable.Range(desdeX, hastaX - desdeX + 1).Select(x => new Posicion(x, y)).ToArray();
