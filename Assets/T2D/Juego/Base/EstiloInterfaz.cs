@@ -12,10 +12,12 @@ namespace T2D.Juego
         public const float AltoReferencia = 720f;
 
         private const int TamanoTexto = 16;
+        private const int TamanoTextoChico = 14;
         private const int TamanoTitulo = 18;
 
         private static GUIStyle _caja;
         private static GUIStyle _texto;
+        private static GUIStyle _textoChico;
         private static GUIStyle _titulo;
         private static GUIStyle _boton;
 
@@ -30,6 +32,9 @@ namespace T2D.Juego
 
         /// <summary>Body text.</summary>
         public static GUIStyle Texto => Asegurar(ref _texto, () => new GUIStyle(GUI.skin.label) { fontSize = TamanoTexto, wordWrap = true });
+
+        /// <summary>Smaller text for dense panels such as the legend.</summary>
+        public static GUIStyle TextoChico => Asegurar(ref _textoChico, () => new GUIStyle(GUI.skin.label) { fontSize = TamanoTextoChico, wordWrap = true });
 
         /// <summary>Bold title.</summary>
         public static GUIStyle Titulo => Asegurar(ref _titulo, () => new GUIStyle(GUI.skin.label) { fontSize = TamanoTitulo, fontStyle = FontStyle.Bold });

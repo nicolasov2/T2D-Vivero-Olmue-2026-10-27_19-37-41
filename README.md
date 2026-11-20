@@ -33,6 +33,16 @@ No ejecutes **T2D → Crear escena de prueba** salvo que la escena se rompa: reg
 
 Cada 4 segundos aparece un evento, en este orden: ola de calor (naranja), viento fuerte (azul) y vector de deshidratación (amarillo).
 
+### Ayudas para la demo
+
+| Panel | Dónde | Qué hace |
+|---|---|---|
+| Próximo evento | Arriba a la izquierda | Nombre y color del evento que viene y los segundos que faltan. En pausa dice "En pausa". |
+| Leyenda | Bajo el próximo evento | Qué significa cada color: tipos de casilla y tipos de evento. |
+| Velocidad | Arriba a la derecha | **Pausa**, **x1**, **x2** y **x3**. Al salir de Play vuelve a x1. |
+
+Los paneles laterales caben junto al mapa con la vista Game en 16:9 o más ancha.
+
 ## Estructura
 
 ```

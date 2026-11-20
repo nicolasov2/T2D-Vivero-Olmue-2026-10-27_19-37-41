@@ -92,6 +92,18 @@ namespace T2D.Tests
         }
 
         [Test]
+        public void Temporizador_DiceCuantoFaltaParaElSiguiente()
+        {
+            var temporizador = new TemporizadorDeAparicion(4f);
+
+            temporizador.Avanzar(1.5f);
+            Assert.AreEqual(2.5f, temporizador.SegundosParaElSiguiente, 0.0001f);
+
+            temporizador.Avanzar(3f);
+            Assert.AreEqual(3.5f, temporizador.SegundosParaElSiguiente, 0.0001f);
+        }
+
+        [Test]
         public void DefinicionConVelocidadCero_Lanza()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => new DefinicionEvento("Ola", 0f, 1, new EfectoOlaDeCalor()));

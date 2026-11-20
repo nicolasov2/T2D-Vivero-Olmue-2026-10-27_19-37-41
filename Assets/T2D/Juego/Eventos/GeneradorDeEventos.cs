@@ -26,6 +26,11 @@ namespace T2D.Juego
         private bool _precalentado;
         private bool _ampliacionAvisada;
 
+        /// <summary>Kinds of event in spawn order.</summary>
+        public IReadOnlyList<EventoDefinicionSO> Eventos => eventos;
+
+        private bool PuedeAparecer => _pool != null && _partida.Nivel.Rutas.Count > 0 && !_partida.Nivel.Silo.EstaAgotado;
+
         /// <inheritdoc />
         public void Inicializar(Partida partida)
         {
@@ -50,7 +55,7 @@ namespace T2D.Juego
 
         private void Update()
         {
-            if (_pool == null || _partida.Nivel.Rutas.Count == 0 || _partida.Nivel.Silo.EstaAgotado)
+            if (!PuedeAparecer)
             {
                 return;
             }
@@ -60,6 +65,21 @@ namespace T2D.Juego
             {
                 Aparecer();
             }
+        }
+
+        /// <summary>Next kind of event and the seconds until it spawns; false when no more events will spawn.</summary>
+        public bool TryObtenerProximo(out EventoDefinicionSO proximo, out float segundos)
+        {
+            if (!PuedeAparecer)
+            {
+                proximo = null;
+                segundos = 0f;
+                return false;
+            }
+
+            proximo = eventos[_siguienteEvento];
+            segundos = _temporizador.SegundosParaElSiguiente;
+            return true;
         }
 
         private void Aparecer()

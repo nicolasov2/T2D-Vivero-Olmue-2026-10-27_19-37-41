@@ -22,6 +22,9 @@ namespace T2D.Dominio
         /// <summary>Seconds between events.</summary>
         public float Intervalo { get; }
 
+        /// <summary>Seconds left until the next event is due.</summary>
+        public float SegundosParaElSiguiente => Intervalo - _acumulado;
+
         /// <summary>Adds the elapsed time and returns how many events are due.</summary>
         public int Avanzar(float segundos)
         {
