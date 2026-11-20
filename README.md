@@ -33,6 +33,27 @@ No ejecutes **T2D → Crear escena de prueba** salvo que la escena se rompa: reg
 
 Cada 4 segundos aparece un evento, en este orden: ola de calor (naranja), viento fuerte (azul) y vector de deshidratación (amarillo).
 
+### Ayudas para la demo
+
+| Panel | Dónde | Qué hace |
+|---|---|---|
+| Próximo evento | Arriba a la izquierda | Nombre y color del evento que viene y los segundos que faltan. En pausa dice "En pausa". |
+| Leyenda | Bajo el próximo evento | Qué significa cada color: tipos de casilla y tipos de evento. |
+| Velocidad | Arriba a la derecha | **Pausa**, **x1**, **x2** y **x3**. Al salir de Play vuelve a x1. |
+
+Los paneles laterales caben junto al mapa con la vista Game en 16:9 o más ancha.
+
+### Lo que se ve en el mapa
+
+| Elemento | UT | Qué muestra |
+|---|---|---|
+| Plantín en cada casilla de pasillo | 1686 | Palto con hojas anchas, cítrico con hojas redondas y frutos. Se ponen café al secarse. |
+| Rótulo sobre cada pasillo | 1690 | Hidratación en %. En rojo con "Seco" desde 30 % hacia abajo. |
+| Disco alrededor de un evento | 1689, 1690 | Hasta dónde llega su efecto. La ola de calor no tiene, porque solo afecta al silo. |
+| Barra sobre cada cámara | 1689 | Integridad, de verde a rojo. |
+| Marco rojo y flechas | 1680 | Entrada de cada ruta y dirección hacia el silo. |
+| Texto que sube y se desvanece | 1687, 1766 | Créditos cobrados al instalar y recuperados al desmantelar. |
+
 ## Estructura
 
 ```

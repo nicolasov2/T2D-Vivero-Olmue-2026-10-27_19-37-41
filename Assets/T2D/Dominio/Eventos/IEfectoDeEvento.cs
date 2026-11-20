@@ -7,6 +7,9 @@ namespace T2D.Dominio
     /// </summary>
     public interface IEfectoDeEvento
     {
+        /// <summary>Reach in cells around the event; 0 when it only acts on the silo.</summary>
+        int Alcance { get; }
+
         /// <summary>Applies the effect when the event enters a cell. Returns how many things it affected.</summary>
         int AlEntrarEnCasilla(Posicion casilla, Nivel nivel);
     }

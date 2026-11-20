@@ -14,6 +14,9 @@ namespace T2D.Juego
         [SerializeField, Min(0)] private int danioAlSilo = 10;
         [SerializeField] private Color color = Color.white;
 
+        /// <summary>Name shown to the player.</summary>
+        public string Nombre => nombre;
+
         /// <summary>Tint of the event on the map.</summary>
         public Color Color => color;
 

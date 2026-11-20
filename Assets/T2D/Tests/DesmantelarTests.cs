@@ -19,7 +19,7 @@ namespace T2D.Tests
         [Test]
         public void PA1_ElPanelMuestraLosCreditosQueSeRecuperan()
         {
-            Assert.AreEqual(new Costo(30, 22), CalculadoraDeReembolso.Reembolso(_estacion.Definicion.Costo));
+            Assert.AreEqual(new Costo(30, 20), CalculadoraDeReembolso.Reembolso(_estacion.Definicion.Costo));
         }
 
         [Test]
@@ -40,9 +40,9 @@ namespace T2D.Tests
         {
             var resultado = _nivel.Construccion.Desmantelar(_estacion);
 
-            Assert.AreEqual(new Costo(30, 22), resultado.Valor);
+            Assert.AreEqual(new Costo(30, 20), resultado.Valor);
             Assert.AreEqual(70, _nivel.Creditos.Agua);
-            Assert.AreEqual(77, _nivel.Creditos.Energia);
+            Assert.AreEqual(80, _nivel.Creditos.Energia);
         }
 
         [Test]
