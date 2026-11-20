@@ -3,10 +3,18 @@ using UnityEngine;
 
 namespace T2D.Juego
 {
-    /// <summary>Paints the tilemap from the level and converts between screen, world and cells.</summary>
+    /// <summary>
+    /// Paints the tilemap from the level, marks the entrance and direction of each route (1680) and
+    /// converts between screen, world and cells.
+    /// </summary>
     [DisallowMultipleComponent]
     public sealed class VistaMapa : MonoBehaviour, IParteDePartida
     {
+        private const float EscalaFlecha = 0.55f;
+
+        private static readonly Color ColorFlecha = new Color(0.33f, 0.22f, 0.11f, 0.55f);
+        private static readonly Color ColorEntrada = new Color(0.75f, 0.2f, 0.1f);
+
         private Partida _partida;
 
         private int Alto => _partida.Nivel.Cuadricula.Alto;
@@ -16,6 +24,7 @@ namespace T2D.Juego
         {
             _partida = partida;
             Pintar();
+            MarcarRutas();
         }
 
         /// <summary>Tilemap cell of a domain cell.</summary>
@@ -38,6 +47,33 @@ namespace T2D.Juego
             var mundo = camara.ScreenToWorldPoint(new Vector3(posicionEnPantalla.x, posicionEnPantalla.y, -camara.transform.position.z));
             posicion = Coordenadas.APosicion(_partida.Grid.WorldToCell(mundo), Alto);
             return _partida.Nivel.Cuadricula.Contiene(posicion);
+        }
+
+        private void MarcarRutas()
+        {
+            foreach (var ruta in _partida.Nivel.Rutas)
+            {
+                var entrada = FabricaDeSprites.Crear(_partida, "Entrada de la ruta", _partida.SpriteMarco, OrdenDeDibujo.Entrada);
+                entrada.transform.position = CentroDe(ruta.Entrada);
+                entrada.color = ColorEntrada;
+                entrada.gameObject.SetActive(true);
+                for (var i = 0; i < ruta.Puntos.Count - 1; i++)
+                {
+                    CrearFlecha(ruta.Puntos[i], ruta.Puntos[i + 1]);
+                }
+            }
+        }
+
+        private void CrearFlecha(Posicion desde, Posicion hacia)
+        {
+            var origen = CentroDe(desde);
+            var direccion = CentroDe(hacia) - origen;
+            var flecha = FabricaDeSprites.Crear(_partida, "Flecha de la ruta", SpritesProcedurales.Flecha(), OrdenDeDibujo.Flecha);
+            flecha.transform.position = origen;
+            flecha.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg);
+            flecha.transform.localScale = new Vector3(EscalaFlecha, EscalaFlecha, 1f);
+            flecha.color = ColorFlecha;
+            flecha.gameObject.SetActive(true);
         }
 
         private void Pintar()

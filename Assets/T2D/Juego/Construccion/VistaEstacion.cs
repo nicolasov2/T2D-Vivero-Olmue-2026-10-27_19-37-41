@@ -10,10 +10,14 @@ namespace T2D.Juego
         /// <summary>Domain station drawn by this object.</summary>
         public Estacion Estacion { get; private set; }
 
+        /// <summary>Match the station belongs to, for its helper sprites.</summary>
+        public Partida Partida { get; private set; }
+
         /// <summary>Binds the view to its station and places it on its cell.</summary>
         public void Inicializar(Estacion estacion, VistaMapa mapa)
         {
             Estacion = estacion;
+            Partida = mapa.GetComponent<Partida>();
             transform.position = mapa.CentroDe(estacion.Posicion);
         }
     }

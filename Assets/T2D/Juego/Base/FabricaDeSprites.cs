@@ -6,16 +6,20 @@ namespace T2D.Juego
     public static class FabricaDeSprites
     {
         /// <summary>Hidden child sprite of <paramref name="padre"/> using the match material.</summary>
-        public static SpriteRenderer Crear(Partida padre, string nombre, Sprite sprite, int orden)
+        public static SpriteRenderer Crear(Partida padre, string nombre, Sprite sprite, int orden) =>
+            Crear(padre.transform, padre.MaterialSprites, nombre, sprite, orden);
+
+        /// <summary>Hidden child sprite of any transform (a station or an event), using <paramref name="material"/> when given.</summary>
+        public static SpriteRenderer Crear(Transform padre, Material material, string nombre, Sprite sprite, int orden)
         {
             var objeto = new GameObject(nombre);
-            objeto.transform.SetParent(padre.transform, false);
+            objeto.transform.SetParent(padre, false);
             var renderer = objeto.AddComponent<SpriteRenderer>();
             renderer.sprite = sprite;
             renderer.sortingOrder = orden;
-            if (padre.MaterialSprites != null)
+            if (material != null)
             {
-                renderer.sharedMaterial = padre.MaterialSprites;
+                renderer.sharedMaterial = material;
             }
 
             objeto.SetActive(false);

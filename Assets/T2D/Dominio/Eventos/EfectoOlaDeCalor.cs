@@ -8,6 +8,9 @@ namespace T2D.Dominio
     public sealed class EfectoOlaDeCalor : IEfectoDeEvento
     {
         /// <inheritdoc />
+        public int Alcance => 0;
+
+        /// <inheritdoc />
         public int AlEntrarEnCasilla(Posicion casilla, Nivel nivel) => 0;
     }
 }

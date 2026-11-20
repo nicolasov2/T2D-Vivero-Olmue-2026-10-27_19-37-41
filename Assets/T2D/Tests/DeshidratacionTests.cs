@@ -76,5 +76,25 @@ namespace T2D.Tests
 
         private EventoEstres NuevoVector(EfectoDeshidratacion efecto) =>
             new EventoEstres(new DefinicionEvento("Vector de deshidratación", 1f, 5, efecto), _nivel.Rutas[0]);
+
+        [Test]
+        public void ElPasilloQuedaSecoDesdeElUmbral()
+        {
+            var hidratacion = new Hidratacion();
+
+            hidratacion.Deshidratar(Hidratacion.Maxima - Hidratacion.UmbralSeco - 1);
+            Assert.IsFalse(hidratacion.EstaSeca);
+
+            hidratacion.Deshidratar(1);
+            Assert.IsTrue(hidratacion.EstaSeca);
+        }
+
+        [Test]
+        public void CadaEfectoDiceSuAlcance()
+        {
+            Assert.AreEqual(0, new EfectoOlaDeCalor().Alcance);
+            Assert.AreEqual(2, new EfectoViento(2, 5).Alcance);
+            Assert.AreEqual(1, new EfectoDeshidratacion(1, 10).Alcance);
+        }
     }
 }

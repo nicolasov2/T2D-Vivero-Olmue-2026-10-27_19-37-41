@@ -1,3 +1,4 @@
+using T2D.Dominio;
 using UnityEngine;
 
 namespace T2D.Juego
@@ -5,6 +6,7 @@ namespace T2D.Juego
     /// <summary>
     /// Top bar: level name, water and energy credits (1748 minimal) and silo water (1750 minimal).
     /// Side columns for the demo: next event and colour legend on the left, speed control on the right.
+    /// Floating texts over the map with the credits charged or refunded by a station (1687, 1766).
     /// </summary>
     [RequireComponent(typeof(Partida))]
     public sealed class HudDePartida : MonoBehaviour, IParteDePartida
@@ -20,11 +22,13 @@ namespace T2D.Juego
         private readonly AvisoProximoEvento _aviso = new AvisoProximoEvento();
         private readonly LeyendaDeColores _leyenda = new LeyendaDeColores();
         private readonly ControlDeVelocidad _velocidad = new ControlDeVelocidad();
+        private readonly TextosFlotantes _textos = new TextosFlotantes();
 
         private Partida _partida;
         private ZonasDeInterfaz _zonas;
         private GeneradorDeEventos _generador;
         private bool _tieneGenerador;
+        private VistaMapa _mapa;
 
         /// <inheritdoc />
         public void Inicializar(Partida partida)
@@ -32,9 +36,28 @@ namespace T2D.Juego
             _partida = partida;
             _zonas = GetComponent<ZonasDeInterfaz>();
             _tieneGenerador = TryGetComponent(out _generador);
+            _mapa = GetComponent<VistaMapa>();
+            partida.Nivel.Construccion.EstacionColocada += AlColocar;
+            partida.Nivel.Construccion.EstacionDesmantelada += AlDesmantelar;
         }
 
-        private void OnDestroy() => ControlDeVelocidad.Restablecer();
+        private void OnDestroy()
+        {
+            ControlDeVelocidad.Restablecer();
+            if (_partida == null || _partida.Nivel == null)
+            {
+                return;
+            }
+
+            _partida.Nivel.Construccion.EstacionColocada -= AlColocar;
+            _partida.Nivel.Construccion.EstacionDesmantelada -= AlDesmantelar;
+        }
+
+        private void AlColocar(Estacion estacion) =>
+            _textos.Agregar(TextosFlotantes.Cobro(estacion.Definicion.Costo), _mapa.CentroDe(estacion.Posicion));
+
+        private void AlDesmantelar(Estacion estacion) =>
+            _textos.Agregar(TextosFlotantes.Reembolso(CalculadoraDeReembolso.Reembolso(estacion.Definicion.Costo)), _mapa.CentroDe(estacion.Posicion));
 
         private void OnGUI()
         {
@@ -47,6 +70,7 @@ namespace T2D.Juego
             DibujarBarra();
             DibujarColumnaIzquierda();
             DibujarColumnaDerecha();
+            _textos.Dibujar(_partida.Camara);
         }
 
         private void DibujarBarra()

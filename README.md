@@ -43,6 +43,17 @@ Cada 4 segundos aparece un evento, en este orden: ola de calor (naranja), viento
 
 Los paneles laterales caben junto al mapa con la vista Game en 16:9 o más ancha.
 
+### Lo que se ve en el mapa
+
+| Elemento | UT | Qué muestra |
+|---|---|---|
+| Plantín en cada casilla de pasillo | 1686 | Palto con hojas anchas, cítrico con hojas redondas y frutos. Se ponen café al secarse. |
+| Rótulo sobre cada pasillo | 1690 | Hidratación en %. En rojo con "Seco" desde 30 % hacia abajo. |
+| Disco alrededor de un evento | 1689, 1690 | Hasta dónde llega su efecto. La ola de calor no tiene, porque solo afecta al silo. |
+| Barra sobre cada cámara | 1689 | Integridad, de verde a rojo. |
+| Marco rojo y flechas | 1680 | Entrada de cada ruta y dirección hacia el silo. |
+| Texto que sube y se desvanece | 1687, 1766 | Créditos cobrados al instalar y recuperados al desmantelar. |
+
 ## Estructura
 
 ```
